@@ -86,6 +86,12 @@ class UserController {
       email,
     });
   }
+
+  async index(req, res) {
+    const users = await User.findAll();
+
+    res.json(users);
+  }
 }
 
 export default new UserController();
