@@ -1,8 +1,8 @@
 module.exports = {
-  dialect: 'mysql', // or 'postgres' and yarn add pg-hstore or https://sequelize.org/master/manual/dialects.html
-  host: 'localhost',
-  username: 'root',
-  password: 'root',
+  dialect: 'postgres',
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   database: 'gobarber',
   define: {
     timestamps: true,
