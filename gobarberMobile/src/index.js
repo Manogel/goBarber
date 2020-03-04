@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar, Platform } from 'react-native';
 import '~/config/ReactotronConfig';
 import { Provider } from 'react-redux';
+
 import createNavigator from '~/routes';
+
 import store from './store';
 
 export default function App() {
