@@ -19,10 +19,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <StatusBar
-        backgroundColor="#111"
-        barStyle={Platform.OS === 'ios' ? 'dark-content' : 'light-content'}
-      />
+      <StatusBar backgroundColor="#7159c1" barStyle="light-content" />
       <Routes />
     </Provider>
   );
