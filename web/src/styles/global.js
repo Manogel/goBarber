@@ -10,9 +10,19 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  *:focus{
+    outline: 0;
+  }
+
+  html{
+    height: 100%;
+  }
+
   body {
     background: #f7f7f7;
+    height: 100%;
     -webkit-font-smoothing: antialiased !important
+
   }
   body, input, button {
     border: 0;
@@ -22,6 +32,7 @@ export default createGlobalStyle`
   }
 
   #root {
+    height: 100%;
   }
 
   button {
