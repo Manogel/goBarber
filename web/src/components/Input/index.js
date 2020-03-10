@@ -11,5 +11,10 @@ export default function Input({ name, ...rest }) {
       path: 'value',
     });
   }, [fieldName, registerField]);
-  return <input ref={inputRef} defaultValue={defaultValue} {...rest} />;
+  return (
+    <>
+      <input ref={inputRef} defaultValue={defaultValue} {...rest} />
+      {error && <span>{error}</span>}
+    </>
+  );
 }
