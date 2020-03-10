@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^10.0.0",
+    "@unform/core": "^2.0.0",
+    "@unform/web": "^2.0.0",
     "axios": "^0.19.2",
     "history": "^4.10.1",
     "polished": "^3.4.4",
