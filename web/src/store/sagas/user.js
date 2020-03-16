@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import UserActions from '../ducks/user';
-import api from '~/services/api';
+import api, { setToken } from '~/services/api';
 import history from '~/services/history';
 
 export function* signIn({ payload }) {
@@ -17,7 +17,7 @@ export function* signIn({ payload }) {
       yield put(UserActions.signFailure('User is not provider!'));
       return;
     }
-
+    setToken(token);
     yield put(UserActions.signInSuccess(user, token));
     history.push('/dashboard');
   } catch (err) {
