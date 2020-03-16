@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '~/assets/logo.svg';
 import Input from '~/components/Input';
 import UserActions from '~/store/ducks/user';
@@ -17,6 +17,7 @@ const schemaValidator = Yup.object().shape({
 
 export default function SignIn() {
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.user.loading);
   const formRef = useRef(null);
 
   async function handleSubmit(data) {
@@ -44,7 +45,7 @@ export default function SignIn() {
       <Form ref={formRef} onSubmit={handleSubmit}>
         <Input name="email" type="email" placeholder="Seu email" />
         <Input name="password" type="password" placeholder="Sua senha" />
-        <button type="submit">Acessar</button>
+        <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
         <Link to="/register">Criar conta gratuita</Link>
       </Form>
     </>
