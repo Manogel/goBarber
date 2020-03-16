@@ -2,9 +2,11 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
 import logo from '~/assets/logo.svg';
 import Input from '~/components/Input';
 // import { Container } from './styles';
+import UserActions from '~/store/ducks/user';
 
 const schemaValidator = Yup.object().shape({
   email: Yup.string()
@@ -17,6 +19,7 @@ const schemaValidator = Yup.object().shape({
 });
 
 export default function SignUp() {
+  const dispatch = useDispatch();
   const formRef = useRef(null);
 
   async function handleSubmit(data) {
@@ -24,7 +27,9 @@ export default function SignUp() {
       await schemaValidator.validate(data, {
         abortEarly: false,
       });
-      console.tron.log(data);
+      const { name, email, password } = data;
+
+      dispatch(UserActions.signUpRequest({ name, email, password }));
     } catch (err) {
       const validationErrors = {};
       if (err instanceof Yup.ValidationError) {

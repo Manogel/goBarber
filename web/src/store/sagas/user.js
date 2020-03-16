@@ -25,3 +25,21 @@ export function* signIn({ payload }) {
     yield put(UserActions.signFailure(err));
   }
 }
+
+export function* signUp({ payload }) {
+  try {
+    const { name, email, password } = payload;
+
+    yield call(api.post, '/users', {
+      name,
+      email,
+      password,
+      provider: true,
+    });
+    yield put(UserActions.signFailure(null));
+    history.push('/');
+  } catch (err) {
+    toast.error('Ocorreu um erro ao cadastrar, verifique seus dados!');
+    yield put(UserActions.signFailure(err));
+  }
+}
