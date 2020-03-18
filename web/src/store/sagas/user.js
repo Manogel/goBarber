@@ -43,3 +43,19 @@ export function* signUp({ payload }) {
     yield put(UserActions.signFailure(err));
   }
 }
+
+export function* updateProfile({ payload }) {
+  try {
+    const { name, email, ...rest } = payload;
+
+    const profile = { name, email, ...(rest.oldPassword ? rest : {}) };
+    console.tron.warn(profile);
+
+    const response = yield call(api.put, '/users', profile);
+    yield put(UserActions.updateProfileSuccess(response.data));
+    toast.success('Perfil atualizado com sucesso!');
+  } catch (err) {
+    toast.error('Ocorreu um erro, verifique seus dados!');
+    yield put(UserActions.signFailure(err));
+  }
+}
