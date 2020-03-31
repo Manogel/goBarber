@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Container } from './styles';
 import Input from '~/components/Input';
 import UserActions from '~/store/ducks/user';
+import AvatarInput from './AvatarInput';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -66,6 +67,7 @@ export default function Profile() {
   return (
     <Container>
       <Form initialData={profile} ref={formRef} onSubmit={handleSubmit}>
+        <AvatarInput name="avatar_id" />
         <Input name="name" placeholder="Nome completo" />
         <Input
           name="email"

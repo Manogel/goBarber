@@ -46,10 +46,14 @@ export function* signUp({ payload }) {
 
 export function* updateProfile({ payload }) {
   try {
-    const { name, email, ...rest } = payload;
+    const { name, email, avatar_id, ...rest } = payload;
 
-    const profile = { name, email, ...(rest.oldPassword ? rest : {}) };
-    console.tron.warn(profile);
+    const profile = {
+      name,
+      email,
+      fk_id_avatar: avatar_id,
+      ...(rest.oldPassword ? rest : {}),
+    };
 
     const response = yield call(api.put, '/users', profile);
     yield put(UserActions.updateProfileSuccess(response.data));
