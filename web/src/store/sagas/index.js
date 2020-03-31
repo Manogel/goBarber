@@ -1,6 +1,6 @@
 import { all, takeLatest } from 'redux-saga/effects';
 import { UserTypes } from '../ducks/user';
-import { signIn, signUp, updateProfile } from './user';
+import { signIn, signUp, updateProfile, signOut } from './user';
 import { setToken } from '~/services/api';
 
 function setInitialToken({ payload }) {
@@ -19,5 +19,6 @@ export default function* rootSaga() {
     takeLatest(UserTypes.SIGN_IN_REQUEST, signIn),
     takeLatest(UserTypes.SIGN_UP_REQUEST, signUp),
     takeLatest(UserTypes.UPDATE_PROFILE_REQUEST, updateProfile),
+    takeLatest(UserTypes.SIGN_OUT, signOut),
   ]);
 }

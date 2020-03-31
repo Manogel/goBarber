@@ -63,3 +63,8 @@ export function* updateProfile({ payload }) {
     yield put(UserActions.signFailure(err));
   }
 }
+
+export function* signOut() {
+  yield put(UserActions.signInSuccess(null, null));
+  history.push('/');
+}

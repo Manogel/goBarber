@@ -64,6 +64,10 @@ export default function Profile() {
     }
   }
 
+  function handleSignOut() {
+    dispatch(UserActions.signOut());
+  }
+
   return (
     <Container>
       <Form initialData={profile} ref={formRef} onSubmit={handleSubmit}>
@@ -89,7 +93,9 @@ export default function Profile() {
         />
         <button type="submit"> Atualizar perfil </button>
       </Form>
-      <button type="button"> Sair do GoBarber </button>
+      <button type="button" onClick={handleSignOut}>
+        Sair do GoBarber
+      </button>
     </Container>
   );
 }
