@@ -45,11 +45,6 @@ export default function Dashboard() {
           past: isBefore(compareDate, new Date()),
           appointment: response.data.find(a => {
             const datezonedtime = zonedTimeToUtc(a.date, timezone);
-            console.log(datezonedtime, compareDate);
-            console.log(
-              format(datezonedtime, 'yyyy-MM-dd HH:mm'),
-              format(compareDate, 'yyyy-MM-dd HH:mm')
-            );
             return (
               format(datezonedtime, 'yyyy-MM-dd HH:mm') ===
               format(compareDate, 'yyyy-MM-dd HH:mm')
